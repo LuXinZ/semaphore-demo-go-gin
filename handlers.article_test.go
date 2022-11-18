@@ -10,6 +10,7 @@ import (
 
 func TestShowIndexPageUnauthenticated(t *testing.T) {
 	r := getRouter(true)
+	r.GET("/", showIndexPage)
 	req, _ := http.NewRequest("GET", "/", nil)
 	testHTTPResponse(t, r, req, func(w *httptest.ResponseRecorder) bool {
 		// test that the http status code is 200
